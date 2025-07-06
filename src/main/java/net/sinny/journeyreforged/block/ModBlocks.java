@@ -36,7 +36,7 @@ public final class ModBlocks {
                     .hardness(0.8f)
                     .resistance(0.8f)
                     .sounds(BlockSoundGroup.WOOL)
-                    .burnable())); //isnt making the block flammable nor be able to use as fuel, whichever it is (want both)
+                    .burnable())); //TODO doesnt make block burnable nor a fuel source
 
     private static Block registerblock(String name, Block block) {
         registerBlockItem(name, block);

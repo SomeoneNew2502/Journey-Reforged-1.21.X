@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+//TODO move fall dmg value to properties
 public class WarpedWeaveBlock extends Block {
     public WarpedWeaveBlock(Settings settings) {
         super(settings);
