@@ -1,5 +1,6 @@
 package net.sinny.journeyreforged.item;
 
+import lombok.extern.slf4j.Slf4j;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -10,6 +11,7 @@ import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
 import net.sinny.journeyreforged.block.ModBlocks;
 
+@Slf4j
 public class ModItemGroups {
 
     public static final ItemGroup BLOCKS = Registry.register(Registries.ITEM_GROUP,
@@ -37,6 +39,6 @@ public class ModItemGroups {
                     })).build());
 
     public static void registerItemGroups() {
-        JourneyReforged.LOGGER.info("Registering Item Groups for " + JourneyReforged.MOD_ID);
+        log.info("Registering Item Groups for " + JourneyReforged.MOD_ID);
     }
 }
