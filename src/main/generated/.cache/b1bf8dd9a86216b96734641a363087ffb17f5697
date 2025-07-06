@@ -1,8 +1,0 @@
-// 1.21	2025-07-06T17:49:58.4027787	Journey Reforged/Tags for minecraft:block
-d56b8473240074b0ca79aa77d690c3b54b471dbc data\minecraft\tags\block\mineable\axe.json
-5402e89fa70c9e614abfca6155fb6755ccd17ced data\minecraft\tags\block\needs_diamond_tool.json
-cd6619faa90e49067efd6010d779eabf2e6a4fa6 data\minecraft\tags\block\dampens_vibrations.json
-cd6619faa90e49067efd6010d779eabf2e6a4fa6 data\minecraft\tags\block\occludes_vibration_signals.json
-5402e89fa70c9e614abfca6155fb6755ccd17ced data\minecraft\tags\block\beacon_base_blocks.json
-6a76c6abe08729c49fd8677a19c044faa40051af data\minecraft\tags\block\mineable\pickaxe.json
-bd8093893d132208f80a2cb2b66ff95fc8d33cb4 data\minecraft\tags\block\needs_stone_tool.json

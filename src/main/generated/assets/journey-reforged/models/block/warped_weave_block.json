@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "journey-reforged:block/warped_weave_block"
-  }
-}
