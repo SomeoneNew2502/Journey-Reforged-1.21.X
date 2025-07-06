@@ -11,7 +11,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
 
-public class ModBlocks {
+public final class ModBlocks {
 
     public static final Block PEARL_BLOCK = registerblock("pearl_block",
             new Block(AbstractBlock.Settings.create()
@@ -37,6 +37,7 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.WOOL)
                     .burnable()
                     .requiresTool()));
+
 
     private static Block registerblock(String name, Block block) {
         registerBlockItem(name, block);

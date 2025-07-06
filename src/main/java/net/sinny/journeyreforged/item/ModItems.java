@@ -1,11 +1,13 @@
 package net.sinny.journeyreforged.item;
 
+import lombok.extern.slf4j.Slf4j;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
 
+@Slf4j
 public class ModItems {
 
     public static final Item PEARL = registerItem("pearl", new Item(new Item.Settings()));
@@ -19,6 +21,6 @@ public class ModItems {
     }
 
     public static void registerModItems() {
-        JourneyReforged.LOGGER.info("Registering Mod Items for " + JourneyReforged.MOD_ID);
+        log.info("Registering Mod Items for " + JourneyReforged.MOD_ID);
     }
 }
