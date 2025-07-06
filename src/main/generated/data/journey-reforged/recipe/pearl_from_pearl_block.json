@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "building",
+  "category": "misc",
+  "group": "pearl",
   "ingredients": [
     {
       "item": "journey-reforged:pearl_block"

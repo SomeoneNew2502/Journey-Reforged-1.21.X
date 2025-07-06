@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "prismarine_nugget",
+  "ingredients": [
+    {
+      "item": "journey-reforged:prismarine_ingot"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "journey-reforged:prismarine_nugget"
+  }
+}

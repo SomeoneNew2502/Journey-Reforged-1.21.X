@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "prismarine_ingot",
+  "ingredients": [
+    {
+      "item": "journey-reforged:prismarine_alloy_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "journey-reforged:prismarine_ingot"
+  }
+}
