@@ -1,0 +1,16 @@
+{
+  "itemgroup.journey-reforged.ingredients": "Ingredients",
+  "itemgroup.journey-reforged.blocks": "Blocks",
+
+
+  "block.journey-reforged.pearl_block": "Pearl Block",
+  "block.journey-reforged.prismarine_alloy_block": "Block of Prismarine Alloy",
+  "block.journey-reforged.warped_weave_block": "Warped Weave Block",
+
+
+  "item.journey-reforged.pearl": "Pearl",
+  "item.journey-reforged.warped_thread": "Warped Thread",
+  "item.journey-reforged.elder_guardian_scale": "Elder Guardian Scale",
+  "item.journey-reforged.prismarine_nugget": "Prismarine Nugget",
+  "item.journey-reforged.prismarine_ingot": "Prismarine Ingot"
+}
