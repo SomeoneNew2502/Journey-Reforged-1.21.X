@@ -10,6 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
+import net.sinny.journeyreforged.block.custom.WarpedWeaveBlock;
 
 public final class ModBlocks {
 
@@ -30,14 +31,12 @@ public final class ModBlocks {
                     .requiresTool()));
 
     public static final Block WARPED_WEAVE_BLOCK = registerblock("warped_weave_block",
-            new Block(AbstractBlock.Settings.create()
+            new WarpedWeaveBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.DARK_AQUA)
                     .hardness(0.8f)
                     .resistance(0.8f)
                     .sounds(BlockSoundGroup.WOOL)
-                    .burnable()
-                    .requiresTool()));
-
+                    .burnable())); //TODO doesnt make block burnable nor a fuel source
 
     private static Block registerblock(String name, Block block) {
         registerBlockItem(name, block);
