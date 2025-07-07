@@ -46,5 +46,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
                 .add(ModBlock.WARPED_WEAVE.getBlock());
+
+        getOrCreateTagBuilder(BlockTags.WOOL_CARPETS)
+                .add(ModBlock.WARPED_WEAVE_CARPET.getBlock());
     }
 }
