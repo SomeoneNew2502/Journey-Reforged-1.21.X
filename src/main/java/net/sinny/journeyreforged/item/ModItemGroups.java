@@ -23,6 +23,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PEARL_BLOCK);
                         entries.add(ModBlocks.PRISMARINE_ALLOY_BLOCK);
                         entries.add(ModBlocks.WARPED_WEAVE_BLOCK);
+                        entries.add(ModBlocks.WARPED_WEAVE_CARPET);
                     })).build());
 
     public static final ItemGroup INGREDIENTS = Registry.register(Registries.ITEM_GROUP,

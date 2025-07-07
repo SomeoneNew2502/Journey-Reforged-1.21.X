@@ -11,6 +11,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
 import net.sinny.journeyreforged.block.custom.WarpedWeaveBlock;
+import net.sinny.journeyreforged.block.custom.WarpedWeaveCarpet;
 
 public final class ModBlocks {
 
@@ -35,8 +36,14 @@ public final class ModBlocks {
                     .mapColor(MapColor.DARK_AQUA)
                     .hardness(0.8f)
                     .resistance(0.8f)
-                    .sounds(BlockSoundGroup.WOOL)
-                    .burnable())); //TODO doesnt make block burnable nor a fuel source
+                    .sounds(BlockSoundGroup.WOOL)));
+
+    public static final Block WARPED_WEAVE_CARPET = registerblock("warped_weave_carpet",
+            new WarpedWeaveCarpet(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.DARK_AQUA)
+                    .hardness(0.1f)
+                    .resistance(0.1f)
+                    .sounds(BlockSoundGroup.WOOL)));
 
     private static Block registerblock(String name, Block block) {
         registerBlockItem(name, block);
