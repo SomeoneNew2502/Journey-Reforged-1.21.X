@@ -1,5 +1,6 @@
 package net.sinny.journeyreforged.block;
 
+import lombok.extern.slf4j.Slf4j;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
@@ -13,6 +14,7 @@ import net.sinny.journeyreforged.JourneyReforged;
 import net.sinny.journeyreforged.block.custom.WarpedWeaveBlock;
 import net.sinny.journeyreforged.block.custom.WarpedWeaveCarpet;
 
+@Slf4j
 public final class ModBlocks {
 
     public static final Block PEARL_BLOCK = registerblock("pearl_block",
@@ -45,16 +47,20 @@ public final class ModBlocks {
                     .resistance(0.1f)
                     .sounds(BlockSoundGroup.WOOL)));
 
+
+    //todo fix implementation or rename method
+    public static void registerModBlocks() {
+        log.info("Registering Mod Blocks for {}", JourneyReforged.MOD_ID);
+    }
+
+
     private static Block registerblock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(JourneyReforged.MOD_ID, name), block);
     }
+
     private static void registerBlockItem(String name, Block block) {
         Registry.register(Registries.ITEM, Identifier.of(JourneyReforged.MOD_ID, name),
-                new BlockItem(block, new Item.Settings()));
-    }
-
-    public static void registerModBlocks() {
-        JourneyReforged.LOGGER.info("Registering Mod Blocks for " + JourneyReforged.MOD_ID);
+                new BlockItem(block, new Item.Settings().maxCount(16)));
     }
 }
