@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
 
 @Slf4j
-public class ModBlockRegisterService {
+public final class ModBlockRegisterService {
 
     private static final ModBlockRegisterService instance = new ModBlockRegisterService();
 
