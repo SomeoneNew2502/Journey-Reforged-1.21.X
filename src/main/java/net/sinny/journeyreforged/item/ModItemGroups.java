@@ -10,7 +10,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
 import net.sinny.journeyreforged.block.ModBlock;
-import net.sinny.journeyreforged.block.ModBlocks;
 
 @Slf4j
 public class ModItemGroups {
@@ -21,10 +20,10 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModBlock.PEARL.getBlock()))
                     .displayName(Text.translatable("itemgroup.journey-reforged.blocks"))
                     .entries(((displayContext, entries) -> {
-                        entries.add(ModBlocks.PEARL_BLOCK);
-                        entries.add(ModBlocks.PRISMARINE_ALLOY_BLOCK);
-                        entries.add(ModBlocks.WARPED_WEAVE_BLOCK);
-                        entries.add(ModBlocks.WARPED_WEAVE_CARPET);
+                        entries.add(ModBlock.PEARL.getBlock());
+                        entries.add(ModBlock.PRISMARINE_ALLOY.getBlock());
+                        entries.add(ModBlock.WARPED_WEAVE.getBlock());
+                        entries.add(ModBlock.WARPED_WEAVE_CARPET.getBlock());
                     })).build());
 
     public static final ItemGroup INGREDIENTS = Registry.register(Registries.ITEM_GROUP,

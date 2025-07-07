@@ -7,12 +7,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
-import net.sinny.journeyreforged.JourneyReforged;
 import net.sinny.journeyreforged.block.custom.WarpedWeaveBlock;
+import net.sinny.journeyreforged.block.custom.WarpedWeaveCarpet;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -52,14 +49,14 @@ public enum ModBlock {
             (block) -> new BlockItem(block, new Item.Settings())
     ),
 
-    /*WARPED_WEAVE_CARPET(
+    WARPED_WEAVE_CARPET(
             () -> new WarpedWeaveCarpet(AbstractBlock.Settings.create()
                     .mapColor(MapColor.DARK_AQUA)
                     .hardness(0.1f)
                     .resistance(0.1f)
                     .sounds(BlockSoundGroup.WOOL)),
             (block) -> new BlockItem(block, new Item.Settings())
-    ),*/
+    ),
     ;
 
 
@@ -68,29 +65,7 @@ public enum ModBlock {
 
 
     ModBlock(Supplier<Block> blockCreator, Function<Block, BlockItem> blockItemCreator) {
-        String name = asBlockName(name());
-
-        this.block = registerBlock(name, blockCreator.get());
-        this.blockItem = registerBlockItem(name, blockItemCreator.apply(block));
-
-        logRegistering(name);
-    }
-
-    private static void logRegistering(String name) {
-        log.info("Registering Mod Block {} for {}", name, JourneyReforged.MOD_ID);
-    }
-
-
-    private static Block registerBlock(String name, Block block) {
-        return Registry.register(Registries.BLOCK, Identifier.of(JourneyReforged.MOD_ID, name), block);
-    }
-
-    private static BlockItem registerBlockItem(String name, BlockItem blockItem) {
-        return Registry.register(Registries.ITEM, Identifier.of(JourneyReforged.MOD_ID, name), blockItem);
-    }
-
-
-    private static String asBlockName(String name) {
-        return name.toLowerCase() + "_block";
+        this.block = blockCreator.get();
+        this.blockItem = blockItemCreator.apply(block);
     }
 }

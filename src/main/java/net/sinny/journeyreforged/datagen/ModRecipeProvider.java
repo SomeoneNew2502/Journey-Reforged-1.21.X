@@ -9,7 +9,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
-import net.sinny.journeyreforged.block.ModBlocks;
+import net.sinny.journeyreforged.block.ModBlock;
 import net.sinny.journeyreforged.item.ModItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -22,12 +22,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     @Override
     public void generate(RecipeExporter recipeExporter) {
 
-        offer2x2CompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEARL_BLOCK, ModItems.PEARL);
-        offerShapelessRecipe(recipeExporter, ModItems.PEARL, ModBlocks.PEARL_BLOCK, "pearl", 4);
+        offer2x2CompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlock.PEARL.getBlock(), ModItems.PEARL);
+        offerShapelessRecipe(recipeExporter, ModItems.PEARL, ModBlock.PEARL.getBlock(), "pearl", 4);
 
 
-        offerCompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRISMARINE_ALLOY_BLOCK, ModItems.PRISMARINE_INGOT);
-        offerShapelessRecipe(recipeExporter, ModItems.PRISMARINE_INGOT, ModBlocks.PRISMARINE_ALLOY_BLOCK, "prismarine_ingot", 9);
+        offerCompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlock.PRISMARINE_ALLOY.getBlock(), ModItems.PRISMARINE_INGOT);
+        offerShapelessRecipe(recipeExporter, ModItems.PRISMARINE_INGOT, ModBlock.PRISMARINE_ALLOY.getBlock(), "prismarine_ingot", 9);
 
         offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, ModItems.PRISMARINE_NUGGET, RecipeCategory.MISC, ModItems.PRISMARINE_INGOT, "prismarine_ingot_from_nugget", "prismarine_ingot", "prismarine_nugget_from_ingot", "prismarine_nugget");
 
@@ -42,13 +42,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.ELDER_GUARDIAN_SCALE), conditionsFromItem(ModItems.ELDER_GUARDIAN_SCALE))
                 .offerTo(recipeExporter, Identifier.of(JourneyReforged.MOD_ID, "prismarine_ingot_from_scales"));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.WARPED_WEAVE_CARPET)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlock.WARPED_WEAVE_CARPET.getBlock())
                 .pattern("WW ")
                 .pattern("   ")
                 .pattern("   ")
-                .input('W', ModBlocks.WARPED_WEAVE_BLOCK)
-                .criterion(hasItem(ModBlocks.WARPED_WEAVE_CARPET), conditionsFromItem(ModBlocks.WARPED_WEAVE_CARPET))
-                .criterion(hasItem(ModBlocks.WARPED_WEAVE_BLOCK), conditionsFromItem(ModBlocks.WARPED_WEAVE_BLOCK))
+                .input('W', ModBlock.WARPED_WEAVE.getBlock())
+                .criterion(hasItem(ModBlock.WARPED_WEAVE_CARPET.getBlock()), conditionsFromItem(ModBlock.WARPED_WEAVE_CARPET.getBlock()))
+                .criterion(hasItem(ModBlock.WARPED_WEAVE.getBlock()), conditionsFromItem(ModBlock.WARPED_WEAVE.getBlock()))
                 .offerTo(recipeExporter);
     }
 }

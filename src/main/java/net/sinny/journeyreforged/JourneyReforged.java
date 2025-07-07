@@ -1,6 +1,7 @@
 package net.sinny.journeyreforged;
 
 import net.fabricmc.api.ModInitializer;
+import net.sinny.journeyreforged.block.ModBlockRegisterService;
 import net.sinny.journeyreforged.item.ModItemGroups;
 import net.sinny.journeyreforged.item.ModItems;
 
@@ -14,5 +15,6 @@ public class JourneyReforged implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 
 		ModItems.registerModItems();
+		ModBlockRegisterService.getInstance().registerModBlocks();
 	}
 }
