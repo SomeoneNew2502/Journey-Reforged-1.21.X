@@ -1,6 +1,7 @@
 package net.sinny.journeyreforged.block;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
@@ -16,6 +17,7 @@ import net.sinny.journeyreforged.block.custom.WarpedWeaveBlock;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+@Slf4j
 @Getter
 public enum ModBlock {
 
@@ -70,6 +72,12 @@ public enum ModBlock {
 
         this.block = registerBlock(name, blockCreator.get());
         this.blockItem = registerBlockItem(name, blockItemCreator.apply(block));
+
+        logRegistering(name);
+    }
+
+    private static void logRegistering(String name) {
+        log.info("Registering Mod Block {} for {}", name, JourneyReforged.MOD_ID);
     }
 
 

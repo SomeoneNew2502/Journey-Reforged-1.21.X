@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
-import net.sinny.journeyreforged.block.ModBlocks;
+import net.sinny.journeyreforged.block.ModBlock;
 import net.sinny.journeyreforged.item.ModItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -18,12 +18,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     @Override
     public void generate(RecipeExporter recipeExporter) {
 
-        offer2x2CompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEARL_BLOCK, ModItems.PEARL);
-        offerShapelessRecipe(recipeExporter, ModItems.PEARL, ModBlocks.PEARL_BLOCK, "pearl", 4);
+        offer2x2CompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlock.PEARL.getBlock(), ModItems.PEARL);
+        offerShapelessRecipe(recipeExporter, ModItems.PEARL, ModBlock.PEARL.getBlock(), "pearl", 4);
 
 
-        offerCompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRISMARINE_ALLOY_BLOCK, ModItems.PRISMARINE_INGOT);
-        offerShapelessRecipe(recipeExporter, ModItems.PRISMARINE_INGOT, ModBlocks.PRISMARINE_ALLOY_BLOCK, "prismarine_ingot", 9);
+        offerCompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlock.PRISMARINE_ALLOY.getBlock(), ModItems.PRISMARINE_INGOT);
+        offerShapelessRecipe(recipeExporter, ModItems.PRISMARINE_INGOT, ModBlock.PRISMARINE_ALLOY.getBlock(), "prismarine_ingot", 9);
 
         offerCompactingRecipe(recipeExporter, RecipeCategory.MISC, ModItems.PRISMARINE_INGOT, ModItems.PRISMARINE_NUGGET, "prismarine_ingot_from_nugget");
 

@@ -9,7 +9,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
-import net.sinny.journeyreforged.block.ModBlocks;
+import net.sinny.journeyreforged.block.ModBlock;
 
 @Slf4j
 public class ModItemGroups {
@@ -17,12 +17,12 @@ public class ModItemGroups {
     public static final ItemGroup BLOCKS = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(JourneyReforged.MOD_ID, "blocks"),
             FabricItemGroup.builder()
-                    .icon(() -> new ItemStack(ModBlocks.PEARL_BLOCK))
+                    .icon(() -> new ItemStack(ModBlock.PEARL.getBlock()))
                     .displayName(Text.translatable("itemgroup.journey-reforged.blocks"))
                     .entries(((displayContext, entries) -> {
-                        entries.add(ModBlocks.PEARL_BLOCK);
-                        entries.add(ModBlocks.PRISMARINE_ALLOY_BLOCK);
-                        entries.add(ModBlocks.WARPED_WEAVE_BLOCK);
+                        entries.add(ModBlock.PEARL.getBlock());
+                        entries.add(ModBlock.PRISMARINE_ALLOY.getBlock());
+                        entries.add(ModBlock.WARPED_WEAVE.getBlock());
                     })).build());
 
     public static final ItemGroup INGREDIENTS = Registry.register(Registries.ITEM_GROUP,
