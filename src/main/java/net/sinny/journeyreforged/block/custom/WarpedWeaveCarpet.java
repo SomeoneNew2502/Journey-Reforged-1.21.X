@@ -17,22 +17,13 @@ public class WarpedWeaveCarpet extends CarpetBlock {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        log.info("[WarpedWeaveCarpet] onSteppedOn triggered at {} by entity {}", pos, entity.getName().getString());
 
         if (entity instanceof LivingEntity) {
 
-            log.info("[WarpedWeaveCarpet] Entity is a LivingEntity.");
-
-            float currentFallDistance = entity.fallDistance;
-
             if (entity.fallDistance > 0.0F) {
-
-                log.info("[WarpedWeaveCarpet] Entity has fall distance: {}. Applying dmage reduction.", currentFallDistance);
 
                 entity.handleFallDamage(entity.fallDistance, 0.15F, entity.getDamageSources().fall());
                 entity.fallDistance = 0.0F;
-
-                log.info("[WarpedWeaveCarpet] Fall distance reset to 0.");
             }
         }
     }
