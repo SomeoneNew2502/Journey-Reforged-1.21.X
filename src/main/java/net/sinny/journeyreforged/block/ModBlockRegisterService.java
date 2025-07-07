@@ -23,7 +23,7 @@ public final class ModBlockRegisterService {
         }
     }
 
-    private void registerModBlock(ModBlock modBlock) {
+    private static void registerModBlock(ModBlock modBlock) {
         String name = asBlockName(modBlock.name());
 
         Registry.register(Registries.BLOCK, Identifier.of(JourneyReforged.MOD_ID, name), modBlock.getBlock());
