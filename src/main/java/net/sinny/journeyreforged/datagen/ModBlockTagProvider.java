@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.sinny.journeyreforged.block.ModBlocks;
+import net.sinny.journeyreforged.block.ModBlock;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -29,22 +29,25 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.CHERRY_LEAVES);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.PEARL_BLOCK)
-                .add(ModBlocks.PRISMARINE_ALLOY_BLOCK);
+                .add(ModBlock.PEARL.getBlock())
+                .add(ModBlock.PRISMARINE_ALLOY.getBlock());
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.PEARL_BLOCK);
+                .add(ModBlock.PEARL.getBlock());
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.PRISMARINE_ALLOY_BLOCK);
+                .add(ModBlock.PRISMARINE_ALLOY.getBlock());
 
         getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
-                .add(ModBlocks.PRISMARINE_ALLOY_BLOCK);
+                .add(ModBlock.PRISMARINE_ALLOY.getBlock());
 
         getOrCreateTagBuilder(BlockTags.DAMPENS_VIBRATIONS)
-                .add(ModBlocks.WARPED_WEAVE_BLOCK);
+                .add(ModBlock.WARPED_WEAVE.getBlock());
 
         getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
-                .add(ModBlocks.WARPED_WEAVE_BLOCK);
+                .add(ModBlock.WARPED_WEAVE.getBlock());
+
+        getOrCreateTagBuilder(BlockTags.WOOL_CARPETS)
+                .add(ModBlock.WARPED_WEAVE_CARPET.getBlock());
     }
 }
