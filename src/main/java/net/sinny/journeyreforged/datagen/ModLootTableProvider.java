@@ -3,7 +3,7 @@ package net.sinny.journeyreforged.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.registry.RegistryWrapper;
-import net.sinny.journeyreforged.block.ModBlock;
+import net.sinny.journeyreforged.registry.BlockRegistry;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -14,9 +14,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        addDrop(ModBlock.PEARL.getBlock());
-        addDrop(ModBlock.PRISMARINE_ALLOY.getBlock());
-        addDrop(ModBlock.WARPED_WEAVE.getBlock());
-        addDrop(ModBlock.WARPED_WEAVE_CARPET.getBlock());
+        addDrop(BlockRegistry.PEARL.getBlock());
+        addDrop(BlockRegistry.PRISMARINE_ALLOY.getBlock());
+        addDrop(BlockRegistry.WARPED_WEAVE.getBlock());
+        addDrop(BlockRegistry.WARPED_WEAVE_CARPET.getBlock());
     }
 }

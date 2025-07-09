@@ -1,4 +1,4 @@
-package net.sinny.journeyreforged.block;
+package net.sinny.journeyreforged.registry;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 
 @Slf4j
 @Getter
-public enum ModBlock {
+public enum BlockRegistry {
 
     PEARL(
             () -> new Block(AbstractBlock.Settings.create()
@@ -64,7 +64,7 @@ public enum ModBlock {
     private final BlockItem blockItem;
 
 
-    ModBlock(Supplier<Block> blockCreator, Function<Block, BlockItem> blockItemCreator) {
+    BlockRegistry(Supplier<Block> blockCreator, Function<Block, BlockItem> blockItemCreator) {
         this.block = blockCreator.get();
         this.blockItem = blockItemCreator.apply(block);
     }
