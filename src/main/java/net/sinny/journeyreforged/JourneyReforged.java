@@ -1,9 +1,10 @@
 package net.sinny.journeyreforged;
 
 import net.fabricmc.api.ModInitializer;
-import net.sinny.journeyreforged.block.ModBlockRegisterService;
-import net.sinny.journeyreforged.item.ModItemGroups;
-import net.sinny.journeyreforged.item.ModItems;
+import net.sinny.journeyreforged.registry.BlockRegistryService;
+import net.sinny.journeyreforged.registry.ItemGroupRegistry;
+import net.sinny.journeyreforged.registry.ItemRegistry;
+import net.sinny.journeyreforged.registry.LootTableRegistry;
 
 public class JourneyReforged implements ModInitializer {
 
@@ -12,9 +13,11 @@ public class JourneyReforged implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModItemGroups.registerItemGroups();
+		ItemGroupRegistry.registerItemGroups();
 
-		ModItems.registerModItems();
-		ModBlockRegisterService.getInstance().registerModBlocks();
+		ItemRegistry.registerModItems();
+		BlockRegistryService.getInstance().registerModBlocks();
+
+		LootTableRegistry.init();
 	}
 }
