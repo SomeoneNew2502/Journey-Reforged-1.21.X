@@ -10,7 +10,7 @@ import net.sinny.journeyreforged.registry.ItemRegistry;
 
 import java.util.function.Supplier;
 
-public enum ToolMaterials implements ToolMaterial {
+public enum JRToolMaterials implements ToolMaterial {
     PRISMARINE(BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
             1111, 10.0F, 5.0F, 22, () -> Ingredient.ofItems(ItemRegistry.PRISMARINE_INGOT));
     
@@ -21,8 +21,8 @@ public enum ToolMaterials implements ToolMaterial {
     private final int enchantability;
     private final Supplier<Ingredient> repairIngredient;
 
-    ToolMaterials(final TagKey<Block> inverseTag, final int itemDurability, final float miningSpeed,
-                          final float attackDamage, final int enchantability, final Supplier<Ingredient> repairIngredient) {
+    JRToolMaterials(final TagKey<Block> inverseTag, final int itemDurability, final float miningSpeed,
+                    final float attackDamage, final int enchantability, final Supplier<Ingredient> repairIngredient) {
         this.inverseTag = inverseTag;
         this.itemDurability = itemDurability;
         this.miningSpeed = miningSpeed;

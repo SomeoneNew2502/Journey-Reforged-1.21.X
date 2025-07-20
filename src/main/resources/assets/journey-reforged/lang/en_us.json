@@ -20,5 +20,13 @@
   "item.journey-reforged.prismarine_pickaxe": "Prismarine Pickaxe",
   "item.journey-reforged.prismarine_axe": "Prismarine Axe",
   "item.journey-reforged.prismarine_shovel": "Prismarine Shovel",
-  "item.journey-reforged.prismarine_hoe": "Prismarine Hoe"
+  "item.journey-reforged.prismarine_hoe": "Prismarine Hoe",
+
+  "item.journey-reforged.wooden_dagger": "Wooden Dagger",
+  "item.journey-reforged.stone_dagger": "Stone Dagger",
+  "item.journey-reforged.golden_dagger": "Golden Dagger",
+  "item.journey-reforged.iron_dagger": "Iron Dagger",
+  "item.journey-reforged.diamond_dagger": "Diamond Dagger",
+  "item.journey-reforged.netherite_dagger": "Netherite Dagger",
+  "item.journey-reforged.prismarine_dagger": "Prismarine Dagger"
 }

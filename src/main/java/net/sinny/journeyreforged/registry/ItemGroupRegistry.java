@@ -49,6 +49,13 @@ public class ItemGroupRegistry {
                         entries.add(ItemRegistry.PRISMARINE_AXE);
                         entries.add(ItemRegistry.PRISMARINE_SHOVEL);
                         entries.add(ItemRegistry.PRISMARINE_HOE);
+                        entries.add(ItemRegistry.WOODEN_DAGGER);
+                        entries.add(ItemRegistry.STONE_DAGGER);
+                        entries.add(ItemRegistry.GOLDEN_DAGGER);
+                        entries.add(ItemRegistry.IRON_DAGGER);
+                        entries.add(ItemRegistry.DIAMOND_DAGGER);
+                        entries.add(ItemRegistry.NETHERITE_DAGGER);
+                        entries.add(ItemRegistry.PRISMARINE_DAGGER);
                     })).build());
 
     public static void registerItemGroups() {
