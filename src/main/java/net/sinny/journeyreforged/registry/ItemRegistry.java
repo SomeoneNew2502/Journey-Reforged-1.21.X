@@ -29,7 +29,7 @@ public class ItemRegistry {
 
     public static final Item PRISMARINE_AXE = registerItem("prismarine_axe",
             new AxeItem(JRToolMaterials.PRISMARINE, new Item.Settings()
-                    .attributeModifiers(AxeItem.createAttributeModifiers(JRToolMaterials.PRISMARINE, 5, -3.0f))));
+                    .attributeModifiers(AxeItem.createAttributeModifiers(JRToolMaterials.PRISMARINE, 3, -3.1f))));
 
     public static final Item PRISMARINE_SHOVEL = registerItem("prismarine_shovel",
             new ShovelItem(JRToolMaterials.PRISMARINE, new Item.Settings()
@@ -41,31 +41,31 @@ public class ItemRegistry {
 
     public static final Item WOODEN_DAGGER = registerItem("wooden_dagger",
             new DaggerItem(ToolMaterials.WOOD, new Item.Settings()
-                    .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 1, -2.0f))));
+                    .attributeModifiers(DaggerItem.createDaggerAttributes(ToolMaterials.WOOD, 2.0F, -2.0f))));
 
     public static final Item STONE_DAGGER = registerItem("stone_dagger",
             new DaggerItem(ToolMaterials.STONE, new Item.Settings()
-                    .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 2, -2.0f))));
+                    .attributeModifiers(DaggerItem.createDaggerAttributes(ToolMaterials.STONE, 1.5F, -2.0f))));
 
     public static final Item IRON_DAGGER = registerItem("iron_dagger",
             new DaggerItem(ToolMaterials.IRON, new Item.Settings()
-                    .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 3, -2.0f))));
+                    .attributeModifiers(DaggerItem.createDaggerAttributes(ToolMaterials.IRON, 1.5F, -2.0f))));
 
     public static final Item GOLDEN_DAGGER = registerItem("golden_dagger",
             new DaggerItem(ToolMaterials.GOLD, new Item.Settings()
-                    .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 1, -2.0f))));
+                    .attributeModifiers(DaggerItem.createDaggerAttributes(ToolMaterials.GOLD, 2.5F, -2.0f))));
 
     public static final Item DIAMOND_DAGGER = registerItem("diamond_dagger",
             new DaggerItem(ToolMaterials.DIAMOND, new Item.Settings()
-                    .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 4, -2.0f))));
+                    .attributeModifiers(DaggerItem.createDaggerAttributes(ToolMaterials.DIAMOND, 1.0F, -2.0f))));
 
     public static final Item NETHERITE_DAGGER = registerItem("netherite_dagger",
             new DaggerItem(ToolMaterials.NETHERITE, new Item.Settings()
-                    .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 5, -2.0f))));
+                    .attributeModifiers(DaggerItem.createDaggerAttributes(ToolMaterials.NETHERITE, 1.0F, -2.0f))));
 
     public static final Item PRISMARINE_DAGGER = registerItem("prismarine_dagger",
             new DaggerItem(JRToolMaterials.PRISMARINE, new Item.Settings()
-                    .attributeModifiers(SwordItem.createAttributeModifiers(JRToolMaterials.PRISMARINE, 4, -2.0f))));
+                    .attributeModifiers(DaggerItem.createDaggerAttributes(JRToolMaterials.PRISMARINE, 0.5F, -2.0f))));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(JourneyReforged.MOD_ID, name), item);
