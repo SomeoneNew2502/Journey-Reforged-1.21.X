@@ -2,9 +2,7 @@ package net.sinny.journeyreforged.registry;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
@@ -55,6 +53,16 @@ public enum BlockRegistry {
                     .hardness(0.1f)
                     .resistance(0.1f)
                     .sounds(BlockSoundGroup.WOOL)),
+            (block) -> new BlockItem(block, new Item.Settings())
+    ),
+
+    DETHREADED_WARPED_STEM(
+            () -> new PillarBlock(AbstractBlock.Settings.copy(Blocks.WARPED_STEM)),
+            (block) -> new BlockItem(block, new Item.Settings())
+    ),
+
+    DETHREADED_WARPED_HYPHAE(
+            () -> new Block(AbstractBlock.Settings.copy(Blocks.WARPED_HYPHAE)),
             (block) -> new BlockItem(block, new Item.Settings())
     ),
     ;

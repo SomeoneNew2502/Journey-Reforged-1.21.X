@@ -36,6 +36,7 @@ public abstract class DaggerEnchantmentMixin {
             if (description.getContent() instanceof TranslatableTextContent content) {
                 String translationKey = content.getKey();
 
+
                 if (BANNED_DAGGER_TRANSLATION_KEYS.contains(translationKey)) {
                     cir.setReturnValue(false);
                 }

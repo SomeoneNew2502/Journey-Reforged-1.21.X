@@ -1,10 +1,8 @@
 package net.sinny.journeyreforged;
 
 import net.fabricmc.api.ModInitializer;
-import net.sinny.journeyreforged.registry.BlockRegistryService;
-import net.sinny.journeyreforged.registry.ItemGroupRegistry;
-import net.sinny.journeyreforged.registry.ItemRegistry;
-import net.sinny.journeyreforged.registry.LootTableRegistry;
+import net.sinny.journeyreforged.event.block.ShearBlockEventHandler;
+import net.sinny.journeyreforged.registry.*;
 
 public class JourneyReforged implements ModInitializer {
 
@@ -13,11 +11,15 @@ public class JourneyReforged implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		EntityRegistry.registerModEntities();
+
 		ItemGroupRegistry.registerItemGroups();
 
 		ItemRegistry.registerModItems();
 		BlockRegistryService.getInstance().registerModBlocks();
 
 		LootTableRegistry.init();
+
+		ShearBlockEventHandler.registerEvents();
 	}
 }

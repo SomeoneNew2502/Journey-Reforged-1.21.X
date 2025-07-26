@@ -18,7 +18,6 @@ public class ItemRegistry {
     public static final Item PRISMARINE_NUGGET = registerItem("prismarine_nugget", new Item(new Item.Settings()));
     public static final Item PRISMARINE_INGOT = registerItem("prismarine_ingot", new Item(new Item.Settings()));
 
-
     public static final Item PRISMARINE_SWORD = registerItem("prismarine_sword",
             new SwordItem(JRToolMaterials.PRISMARINE, new Item.Settings()
                     .attributeModifiers(SwordItem.createAttributeModifiers(JRToolMaterials.PRISMARINE, 3, -2.4f))));

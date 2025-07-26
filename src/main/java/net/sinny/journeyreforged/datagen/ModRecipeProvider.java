@@ -2,6 +2,7 @@ package net.sinny.journeyreforged.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Items;
@@ -24,6 +25,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offer2x2CompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, BlockRegistry.PEARL.getBlock(), ItemRegistry.PEARL);
         offerShapelessRecipe(recipeExporter, ItemRegistry.PEARL, BlockRegistry.PEARL.getBlock(), "pearl", 4);
+
+        offerShapelessRecipe(recipeExporter, Blocks.WARPED_PLANKS, BlockRegistry.DETHREADED_WARPED_STEM.getBlock(), "dethreaded_warped_stem", 4);
+        offerShapelessRecipe(recipeExporter, Blocks.WARPED_PLANKS, BlockRegistry.DETHREADED_WARPED_HYPHAE.getBlock(), "dethreaded_warped_hyphae", 4);
 
         offer2x2CompactingRecipe(recipeExporter, RecipeCategory.DECORATIONS, BlockRegistry.WARPED_WEAVE.getBlock(), ItemRegistry.WARPED_THREAD);
 
@@ -102,6 +106,61 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('S', Items.STICK)
                 .criterion(hasItem(ItemRegistry.PRISMARINE_HOE), conditionsFromItem(ItemRegistry.PRISMARINE_HOE))
                 .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.DETHREADED_WARPED_HYPHAE.getBlock(), 3)
+                .pattern("SS ")
+                .pattern("SS ")
+                .pattern("   ")
+                .input('S', BlockRegistry.DETHREADED_WARPED_STEM.getBlock())
+                .criterion(hasItem(BlockRegistry.DETHREADED_WARPED_HYPHAE.getBlock()), conditionsFromItem(BlockRegistry.DETHREADED_WARPED_HYPHAE.getBlock()))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.ENDER_PEARL, 1)
+                .pattern(" S ")
+                .pattern("SPS")
+                .pattern(" S ")
+                .input('P', ItemRegistry.PEARL)
+                .input('S', ItemRegistry.WARPED_THREAD)
+                .criterion(hasItem(ItemRegistry.PEARL), conditionsFromItem(ItemRegistry.PEARL))
+                .criterion(hasItem(ItemRegistry.WARPED_THREAD), conditionsFromItem(ItemRegistry.WARPED_THREAD))
+                .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.CHAINMAIL_HELMET, 1)
+                .pattern("CCC")
+                .pattern("C C")
+                .pattern("   ")
+                .input('C', Items.CHAIN)
+                .criterion(hasItem(Items.CHAIN), conditionsFromItem(Items.CHAIN))
+                .criterion(hasItem(Items.CHAINMAIL_HELMET), conditionsFromItem(Items.CHAINMAIL_HELMET))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.CHAINMAIL_CHESTPLATE, 1)
+                .pattern("C C")
+                .pattern("CCC")
+                .pattern("CCC")
+                .input('C', Items.CHAIN)
+                .criterion(hasItem(Items.CHAIN), conditionsFromItem(Items.CHAIN))
+                .criterion(hasItem(Items.CHAINMAIL_CHESTPLATE), conditionsFromItem(Items.CHAINMAIL_CHESTPLATE))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.CHAINMAIL_LEGGINGS, 1)
+                .pattern("CCC")
+                .pattern("C C")
+                .pattern("C C")
+                .input('C', Items.CHAIN)
+                .criterion(hasItem(Items.CHAIN), conditionsFromItem(Items.CHAIN))
+                .criterion(hasItem(Items.CHAINMAIL_LEGGINGS), conditionsFromItem(Items.CHAINMAIL_LEGGINGS))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.CHAINMAIL_BOOTS, 1)
+                .pattern("   ")
+                .pattern("C C")
+                .pattern("C C")
+                .input('C', Items.CHAIN)
+                .criterion(hasItem(Items.CHAIN), conditionsFromItem(Items.CHAIN))
+                .criterion(hasItem(Items.CHAINMAIL_BOOTS), conditionsFromItem(Items.CHAINMAIL_BOOTS))
                 .offerTo(recipeExporter);
     }
 }

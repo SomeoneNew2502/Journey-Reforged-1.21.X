@@ -23,6 +23,8 @@ public class ItemGroupRegistry {
                         entries.add(BlockRegistry.PRISMARINE_ALLOY.getBlock());
                         entries.add(BlockRegistry.WARPED_WEAVE.getBlock());
                         entries.add(BlockRegistry.WARPED_WEAVE_CARPET.getBlock());
+                        entries.add(BlockRegistry.DETHREADED_WARPED_STEM.getBlock());
+                        entries.add(BlockRegistry.DETHREADED_WARPED_HYPHAE.getBlock());
                     })).build());
 
     public static final ItemGroup INGREDIENTS = Registry.register(Registries.ITEM_GROUP,
