@@ -9,6 +9,9 @@
   "block.journey-reforged.warped_weave_block": "Warped Weave Block",
   "block.journey-reforged.warped_weave_carpet_block": "Warped Weave Carpet",
 
+  "block.journey-reforged.dethreaded_warped_stem_block": "Dethreaded Warped Stem",
+  "block.journey-reforged.dethreaded_warped_hyphae_block": "Dethreaded Warped Hyphae",
+
 
   "item.journey-reforged.pearl": "Pearl",
   "item.journey-reforged.warped_thread": "Warped Thread",
@@ -28,5 +31,19 @@
   "item.journey-reforged.iron_dagger": "Iron Dagger",
   "item.journey-reforged.diamond_dagger": "Diamond Dagger",
   "item.journey-reforged.netherite_dagger": "Netherite Dagger",
-  "item.journey-reforged.prismarine_dagger": "Prismarine Dagger"
+  "item.journey-reforged.prismarine_dagger": "Prismarine Dagger",
+
+  "item.journey-reforged.prismarine_upgrade_smithing_template": "Prismarine Upgrade",
+
+  "upgrade.journey-reforged.prismarine_upgrade": "Prismarine Upgrade",
+  "upgrade.journey-reforged.prismarine_upgrade.applies_to": "Diamond Gear",
+  "upgrade.journey-reforged.prismarine_upgrade.ingredients": "Prismarine Ingot",
+
+  "item.journey-reforged.smithing_template.prismarine_upgrade.base_slot_description": "Add diamond sword, pickaxe, axe, shovel, or hoe",
+  "item.journey-reforged.smithing_template.prismarine_upgrade.additions_slot_description": "Add prismarine ingot",
+
+  "item.modifiers.when_thrown": "When Thrown:",
+  "attribute.name.journeyreforged.thrown_damage": "Thrown Damage",
+
+  "enchantment.journey-reforged.repossession": "Repossession"
 }

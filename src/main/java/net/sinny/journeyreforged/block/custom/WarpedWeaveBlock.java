@@ -12,7 +12,6 @@ public class WarpedWeaveBlock extends Block {
         super(settings);
     }
 
-    // 0.15x fall damage multiplier when landed upon
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         entity.handleFallDamage(fallDistance, 0.15F, entity.getDamageSources().fall());
