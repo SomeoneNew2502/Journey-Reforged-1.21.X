@@ -1,4 +1,4 @@
-package net.sinny.journeyreforged.client.model; // Use your new package path
+package net.sinny.journeyreforged.client.model;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
@@ -9,7 +9,6 @@ import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.entity.ThrownDaggerEntity;
 
 public class PrismarineDaggerThrownModel extends EntityModel<ThrownDaggerEntity> {
-    // This part is perfect. It defines a unique ID for your model's shape.
     public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(Identifier.of("journey-reforged", "prismarine_dagger_thrown"), "main");
     private final ModelPart bb_main;
 
@@ -17,7 +16,6 @@ public class PrismarineDaggerThrownModel extends EntityModel<ThrownDaggerEntity>
         this.bb_main = root.getChild("bb_main");
     }
 
-    // This method defines the shape of the model. It is fully compatible with 1.21.
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
@@ -46,7 +44,5 @@ public class PrismarineDaggerThrownModel extends EntityModel<ThrownDaggerEntity>
 
     @Override
     public void setAngles(ThrownDaggerEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-        // This entity doesn't have limbs, so we leave this empty.
-        // You could add rotation logic here if you wanted it to wobble, etc.
     }
 }

@@ -20,7 +20,7 @@ public abstract class CreeperExplosionMixin {
 
         for (Entity hit : creeper.getWorld().getOtherEntities(
                 creeper,
-                creeper.getBoundingBox().expand(3.0D)   // vanilla explosion radius
+                creeper.getBoundingBox().expand(3.0D)
         )) {
             if (hit instanceof PlayerEntity player && player.isBlocking()) {
                 ItemStack shield = player.getStackInHand(Hand.MAIN_HAND).isOf(Items.SHIELD)

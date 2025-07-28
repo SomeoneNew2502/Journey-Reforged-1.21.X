@@ -47,10 +47,6 @@ public class ThrownDaggerEntityRenderer extends EntityRenderer<ThrownDaggerEntit
         );
     }
 
-    // In ThrownDaggerEntityRenderer.java
-
-    // In ThrownDaggerEntityRenderer.java
-
     @Override
     public void render(ThrownDaggerEntity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
         matrices.push();
@@ -64,7 +60,6 @@ public class ThrownDaggerEntityRenderer extends EntityRenderer<ThrownDaggerEntit
             return;
         }
 
-        // --- STEP 1: AIM THE DAGGER (Your Original, Correct Aiming Logic) ---
         float finalYaw = entity.isStuck() ? entity.getYaw() : MathHelper.lerp(tickDelta, entity.prevYaw, entity.getYaw());
         float finalPitch = entity.isStuck() ? entity.getPitch() : MathHelper.lerp(tickDelta, entity.prevPitch, entity.getPitch());
 
@@ -72,26 +67,17 @@ public class ThrownDaggerEntityRenderer extends EntityRenderer<ThrownDaggerEntit
         matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(finalPitch + 90.0F));
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90.0F));
 
-        // --- STEP 2: CORRECT THE PIVOT POINT AND SPIN (The New, Correct Logic) ---
         if (!entity.isStuck()) {
-            // DEFINE THE OFFSET TO FIND THE MODEL'S TRUE CENTER.
-            // You will need to tweak this value through trial and error.
-            // Start with a small value and see how it affects the wobble.
-            // A value of 0.0 means no correction.
-            double pivotOffsetY = 0.0; // <-- TWEAK THIS VALUE (e.g., 0.25, -0.3, etc.)
+            double pivotOffsetY = 0.0;
 
-            // 2a. Move the pivot point to the model's true center.
             matrices.translate(0.0, pivotOffsetY, 0.0);
 
-            // 2b. Perform the spin around the new, correct pivot.
             float spinAngle = (entity.age + tickDelta) * 90.0F;
             matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(spinAngle));
 
-            // 2c. CRITICAL: Move the pivot point back to its original location.
             matrices.translate(0.0, -pivotOffsetY, 0.0);
         }
 
-        // --- STEP 3: RENDER THE MODEL ---
         model.render(matrices, vertexConsumers.getBuffer(model.getLayer(texture)), light, OverlayTexture.DEFAULT_UV, -1);
 
         matrices.pop();

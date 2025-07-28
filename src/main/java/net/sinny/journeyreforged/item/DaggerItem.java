@@ -1,21 +1,17 @@
 package net.sinny.journeyreforged.item;
 
 import net.minecraft.block.Blocks;
-import net.minecraft.component.Component;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.component.type.ToolComponent;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.item.tooltip.TooltipAppender;
 import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.text.Text;
@@ -35,7 +31,6 @@ public final class DaggerItem extends ToolItem {
     public DaggerItem(ToolMaterial material, Settings settings) {
         super(material, settings
                 .component(DataComponentTypes.TOOL, createToolComponent())
-                //stack.set(DataComponentTypes.ENCHANTMENTS, stack.getEnchantments().withShowInTooltip(false));
         );
         this.material = material;
     }
@@ -53,9 +48,6 @@ public final class DaggerItem extends ToolItem {
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        // --- STEP 1: Manually render the tooltip sections you want to control ---
-        // We will add enchantments and your custom attributes in the precise order you want.
-
         stack.set(DataComponentTypes.ENCHANTMENTS, stack.getEnchantments().withShowInTooltip(false));
 
         ItemEnchantmentsComponent enchantments = stack.get(DataComponentTypes.ENCHANTMENTS);

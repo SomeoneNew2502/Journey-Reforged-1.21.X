@@ -1,6 +1,5 @@
 package net.sinny.journeyreforged.datagen;
 
-import com.google.gson.JsonElement;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancement.Advancement;
@@ -241,9 +240,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         @Override
         public void accept(Identifier id, Recipe<?> recipe, @Nullable AdvancementEntry advancement) {
-            // Create a new Identifier in the "minecraft" namespace using the path from the original id.
             Identifier vanillaId = Identifier.ofVanilla(id.getPath());
-            // Pass the recipe through to the original exporter with the corrected vanilla Identifier.
             this.originalExporter.accept(vanillaId, recipe, advancement);
         }
 

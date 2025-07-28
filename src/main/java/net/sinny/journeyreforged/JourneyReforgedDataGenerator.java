@@ -22,7 +22,6 @@ public class JourneyReforgedDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
-		// This line points to the bootstrap method you already have in ModEnchantmentProvider.
 		registryBuilder.addRegistry(RegistryKeys.ENCHANTMENT, ModEnchantmentProvider::bootstrap);
 	}
 }

@@ -28,7 +28,6 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        // --- Standard Items ---
         itemModelGenerator.register(ItemRegistry.PEARL, Models.GENERATED);
         itemModelGenerator.register(ItemRegistry.PRISMARINE_NUGGET, Models.GENERATED);
         itemModelGenerator.register(ItemRegistry.PRISMARINE_INGOT, Models.GENERATED);
@@ -42,7 +41,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemRegistry.PRISMARINE_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(ItemRegistry.PRISMARINE_HOE, Models.HANDHELD);
 
-        // --- Daggers: Register with our custom model ---
         Model daggerModel = new CustomDaggerModel();
 
         itemModelGenerator.register(ItemRegistry.WOODEN_DAGGER, daggerModel);
@@ -54,13 +52,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemRegistry.PRISMARINE_DAGGER, daggerModel);
     }
 
-    /**
-     * A custom Model that generates JSON identical to "item/handheld" but adds a "ground"
-     * display transform, which is required for rendering thrown entities correctly.
-     */
     private static class CustomDaggerModel extends Model {
 
-        // FIX: Use Identifier.of() as the constructor is private in 1.21
         public CustomDaggerModel() {
             super(Optional.of(Identifier.of("minecraft", "item/handheld")), Optional.empty(), TextureKey.LAYER0);
         }
@@ -80,7 +73,6 @@ public class ModModelProvider extends FabricModelProvider {
             return root;
         }
 
-        // FIX: Replaced missing JsonHelper with a manual JsonArray builder
         private static JsonArray createFloatArray(float... values) {
             JsonArray jsonArray = new JsonArray();
             for (float value : values) {

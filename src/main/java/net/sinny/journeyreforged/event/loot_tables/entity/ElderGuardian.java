@@ -15,7 +15,6 @@ public class ElderGuardian {
 
     public static void modifyLootTables() {
 
-        //Adds a new pool to the Elder Guardian loottable
         LootTableEvents.MODIFY.register((id, tableBuilder, source, registries) -> {
             if (ELDER_GUARDIAN.equals(id.getValue())) {
                 tableBuilder.pool(LootPool.builder()

@@ -11,8 +11,6 @@ public class JourneyReforgedClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // --- Register All Model Layers ---
-        // You must register the shape of every model you want to use.
         EntityModelLayerRegistry.registerModelLayer(WoodenDaggerThrownModel.LAYER_LOCATION, WoodenDaggerThrownModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(StoneDaggerThrownModel.LAYER_LOCATION, StoneDaggerThrownModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(IronDaggerThrownModel.LAYER_LOCATION, IronDaggerThrownModel::getTexturedModelData);
@@ -21,7 +19,6 @@ public class JourneyReforgedClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(NetheriteDaggerThrownModel.LAYER_LOCATION, NetheriteDaggerThrownModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(PrismarineDaggerThrownModel.LAYER_LOCATION, PrismarineDaggerThrownModel::getTexturedModelData);
 
-        // --- Register the Single Universal Renderer ---
         EntityRendererRegistry.register(EntityRegistry.THROWN_DAGGER, ThrownDaggerEntityRenderer::new);
     }
 }
