@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.sinny.journeyreforged.registry.ItemRegistry;
+import net.sinny.journeyreforged.registry.ModEnchantments;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -40,6 +41,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(daggers);
 
         getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE)
+                .add(daggers);
+
+        getOrCreateTagBuilder(ModEnchantments.REPOSSESSION_ENCHANTABLE)
                 .add(daggers);
 
         getOrCreateTagBuilder(ItemTags.PICKAXES)

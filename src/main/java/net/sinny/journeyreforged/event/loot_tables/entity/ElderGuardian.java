@@ -21,6 +21,11 @@ public class ElderGuardian {
                 tableBuilder.pool(LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .with(ItemEntry.builder(ItemRegistry.ELDER_GUARDIAN_SCALE)).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f))).build());
+
+                tableBuilder.pool(LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(ItemRegistry.PRISMARINE_UPGRADE_SMITHING_TEMPLATE))
+                        .build());
             }
         });
     }

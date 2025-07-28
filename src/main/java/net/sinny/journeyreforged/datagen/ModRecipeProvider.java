@@ -1,18 +1,31 @@
 package net.sinny.journeyreforged.datagen;
 
+import com.google.gson.JsonElement;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.item.SwordItem;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
+import net.sinny.journeyreforged.item.DaggerItem;
 import net.sinny.journeyreforged.registry.BlockRegistry;
 import net.sinny.journeyreforged.registry.ItemRegistry;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -31,7 +44,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offer2x2CompactingRecipe(recipeExporter, RecipeCategory.DECORATIONS, BlockRegistry.WARPED_WEAVE.getBlock(), ItemRegistry.WARPED_THREAD);
 
-        offerCompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, BlockRegistry.PRISMARINE_ALLOY.getBlock(), ItemRegistry.PRISMARINE_INGOT);
+        offerCompactingRecipe(recipeExporter,    RecipeCategory.BUILDING_BLOCKS, BlockRegistry.PRISMARINE_ALLOY.getBlock(), ItemRegistry.PRISMARINE_INGOT);
         offerShapelessRecipe(recipeExporter, ItemRegistry.PRISMARINE_INGOT, BlockRegistry.PRISMARINE_ALLOY.getBlock(), "prismarine_ingot", 9);
 
         offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, ItemRegistry.PRISMARINE_NUGGET, RecipeCategory.MISC, ItemRegistry.PRISMARINE_INGOT, "prismarine_ingot_from_nugget", "prismarine_ingot", "prismarine_nugget_from_ingot", "prismarine_nugget");
@@ -56,57 +69,29 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(BlockRegistry.WARPED_WEAVE.getBlock()), conditionsFromItem(BlockRegistry.WARPED_WEAVE.getBlock()))
                 .offerTo(recipeExporter);
 
+        Map<Item, Item> prismarineUpgrades = new LinkedHashMap<>();
+        prismarineUpgrades.put(Items.DIAMOND_SWORD, ItemRegistry.PRISMARINE_SWORD);
+        prismarineUpgrades.put(Items.DIAMOND_PICKAXE, ItemRegistry.PRISMARINE_PICKAXE);
+        prismarineUpgrades.put(Items.DIAMOND_AXE, ItemRegistry.PRISMARINE_AXE);
+        prismarineUpgrades.put(Items.DIAMOND_SHOVEL, ItemRegistry.PRISMARINE_SHOVEL);
+        prismarineUpgrades.put(Items.DIAMOND_HOE, ItemRegistry.PRISMARINE_HOE);
+        prismarineUpgrades.put(ItemRegistry.DIAMOND_DAGGER, ItemRegistry.PRISMARINE_DAGGER);
 
-        //Prismarine Sword + Tools
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_SWORD)
-                .pattern(" P ")
-                .pattern(" P ")
-                .pattern(" S ")
-                .input('P', ItemRegistry.PRISMARINE_INGOT)
-                .input('S', Items.STICK)
-                .criterion(hasItem(ItemRegistry.PRISMARINE_SWORD), conditionsFromItem(ItemRegistry.PRISMARINE_SWORD))
-                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
-                .offerTo(recipeExporter);
+        prismarineUpgrades.forEach((diamondTool, prismarineTool) -> {
+            RecipeCategory category = (prismarineTool instanceof SwordItem || prismarineTool instanceof DaggerItem)
+                    ? RecipeCategory.COMBAT
+                    : RecipeCategory.TOOLS;
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_PICKAXE)
-                .pattern("PPP")
-                .pattern(" S ")
-                .pattern(" S ")
-                .input('P', ItemRegistry.PRISMARINE_INGOT)
-                .input('S', Items.STICK)
-                .criterion(hasItem(ItemRegistry.PRISMARINE_PICKAXE), conditionsFromItem(ItemRegistry.PRISMARINE_PICKAXE))
-                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
-                .offerTo(recipeExporter);
-
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_AXE)
-                .pattern(" PP")
-                .pattern(" SP")
-                .pattern(" S ")
-                .input('P', ItemRegistry.PRISMARINE_INGOT)
-                .input('S', Items.STICK)
-                .criterion(hasItem(ItemRegistry.PRISMARINE_AXE), conditionsFromItem(ItemRegistry.PRISMARINE_AXE))
-                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
-                .offerTo(recipeExporter);
-
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_SHOVEL)
-                .pattern(" P ")
-                .pattern(" S ")
-                .pattern(" S ")
-                .input('P', ItemRegistry.PRISMARINE_INGOT)
-                .input('S', Items.STICK)
-                .criterion(hasItem(ItemRegistry.PRISMARINE_SHOVEL), conditionsFromItem(ItemRegistry.PRISMARINE_SHOVEL))
-                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
-                .offerTo(recipeExporter);
-
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_HOE)
-                .pattern(" PP")
-                .pattern(" S ")
-                .pattern(" S ")
-                .input('P', ItemRegistry.PRISMARINE_INGOT)
-                .input('S', Items.STICK)
-                .criterion(hasItem(ItemRegistry.PRISMARINE_HOE), conditionsFromItem(ItemRegistry.PRISMARINE_HOE))
-                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
-                .offerTo(recipeExporter);
+            SmithingTransformRecipeJsonBuilder.create(
+                            Ingredient.ofItems(ItemRegistry.PRISMARINE_UPGRADE_SMITHING_TEMPLATE),
+                            Ingredient.ofItems(diamondTool),
+                            Ingredient.ofItems(ItemRegistry.PRISMARINE_INGOT),
+                            category,
+                            prismarineTool)
+                    .criterion(hasItem(prismarineTool), conditionsFromItem(prismarineTool))
+                    .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
+                    .offerTo(recipeExporter, getItemPath(prismarineTool) + "_smithing");
+        });
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.DETHREADED_WARPED_HYPHAE.getBlock(), 3)
                 .pattern("SS ")
@@ -162,5 +147,109 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.CHAIN), conditionsFromItem(Items.CHAIN))
                 .criterion(hasItem(Items.CHAINMAIL_BOOTS), conditionsFromItem(Items.CHAINMAIL_BOOTS))
                 .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.WOODEN_DAGGER, 1)
+                .pattern("   ")
+                .pattern(" P ")
+                .pattern(" S ")
+                .input('P', ItemTags.PLANKS)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.WOODEN_DAGGER), conditionsFromItem(ItemRegistry.WOODEN_DAGGER))
+                .criterion("has_planks", conditionsFromTag(ItemTags.PLANKS))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.STONE_DAGGER, 1)
+                .pattern("   ")
+                .pattern(" C ")
+                .pattern(" S ")
+                .input('C', Items.COBBLESTONE)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.STONE_DAGGER), conditionsFromItem(ItemRegistry.STONE_DAGGER))
+                .criterion(hasItem(Items.COBBLESTONE), conditionsFromItem(Items.COBBLESTONE))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.IRON_DAGGER, 1)
+                .pattern("   ")
+                .pattern(" I ")
+                .pattern(" S ")
+                .input('I', Items.IRON_INGOT)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.IRON_DAGGER), conditionsFromItem(ItemRegistry.IRON_DAGGER))
+                .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.GOLDEN_DAGGER, 1)
+                .pattern("   ")
+                .pattern(" G ")
+                .pattern(" S ")
+                .input('G', Items.GOLD_INGOT)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.GOLDEN_DAGGER), conditionsFromItem(ItemRegistry.GOLDEN_DAGGER))
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.DIAMOND_DAGGER, 1)
+                .pattern("   ")
+                .pattern(" D ")
+                .pattern(" S ")
+                .input('D', Items.DIAMOND)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.DIAMOND_DAGGER), conditionsFromItem(ItemRegistry.DIAMOND_DAGGER))
+                .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
+                .offerTo(recipeExporter);
+
+        SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.ofItems(ItemRegistry.DIAMOND_DAGGER),
+                        Ingredient.ofItems(Items.NETHERITE_INGOT),
+                        RecipeCategory.COMBAT,
+                        ItemRegistry.NETHERITE_DAGGER)
+                .criterion(hasItem(ItemRegistry.NETHERITE_DAGGER), conditionsFromItem(ItemRegistry.NETHERITE_DAGGER))
+                .criterion(hasItem(Items.NETHERITE_INGOT), conditionsFromItem(Items.NETHERITE_INGOT))
+                .offerTo(recipeExporter, getItemPath(ItemRegistry.NETHERITE_DAGGER) + "_smithing");
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.PRISMARINE_UPGRADE_SMITHING_TEMPLATE, 1)
+                .pattern("PSP")
+                .pattern("PMP")
+                .pattern("PPP")
+                .input('S', ItemRegistry.PRISMARINE_UPGRADE_SMITHING_TEMPLATE)
+                .input('P', ItemRegistry.PRISMARINE_INGOT)
+                .input('M', Items.PRISMARINE)
+                .criterion(hasItem(ItemRegistry.PRISMARINE_UPGRADE_SMITHING_TEMPLATE), conditionsFromItem(ItemRegistry.PRISMARINE_UPGRADE_SMITHING_TEMPLATE))
+                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
+                .offerTo(recipeExporter);
+
+        RecipeExporter vanillaExporter = new VanillaRecipeExporter(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.CHAIN, 2)
+                .pattern("N")
+                .pattern("I")
+                .pattern("N")
+                .input('N', Items.IRON_NUGGET)
+                .input('I', Items.IRON_INGOT)
+                .criterion(hasItem(Items.IRON_NUGGET), conditionsFromItem(Items.IRON_NUGGET))
+                .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                .offerTo(vanillaExporter, "chain_");
+    }
+
+    private static class VanillaRecipeExporter implements RecipeExporter {
+        private final RecipeExporter originalExporter;
+
+        private VanillaRecipeExporter(RecipeExporter originalExporter) {
+            this.originalExporter = originalExporter;
+        }
+
+        @Override
+        public void accept(Identifier id, Recipe<?> recipe, @Nullable AdvancementEntry advancement) {
+            // Create a new Identifier in the "minecraft" namespace using the path from the original id.
+            Identifier vanillaId = Identifier.ofVanilla(id.getPath());
+            // Pass the recipe through to the original exporter with the corrected vanilla Identifier.
+            this.originalExporter.accept(vanillaId, recipe, advancement);
+        }
+
+        @Override
+        public Advancement.Builder getAdvancementBuilder() {
+            return this.originalExporter.getAdvancementBuilder();
+        }
     }
 }

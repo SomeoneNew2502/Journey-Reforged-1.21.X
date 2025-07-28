@@ -38,6 +38,7 @@ public class ItemGroupRegistry {
                         entries.add(ItemRegistry.ELDER_GUARDIAN_SCALE);
                         entries.add(ItemRegistry.PRISMARINE_NUGGET);
                         entries.add(ItemRegistry.PRISMARINE_INGOT);
+                        entries.add(ItemRegistry.PRISMARINE_UPGRADE_SMITHING_TEMPLATE);
                     })).build());
 
     public static final ItemGroup GEAR = Registry.register(Registries.ITEM_GROUP,

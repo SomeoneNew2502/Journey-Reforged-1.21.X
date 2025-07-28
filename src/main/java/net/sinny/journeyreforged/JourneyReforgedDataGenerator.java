@@ -2,6 +2,8 @@ package net.sinny.journeyreforged;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.registry.RegistryBuilder;
+import net.minecraft.registry.RegistryKeys;
 import net.sinny.journeyreforged.datagen.*;
 
 public class JourneyReforgedDataGenerator implements DataGeneratorEntrypoint {
@@ -14,5 +16,13 @@ public class JourneyReforgedDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider(ModEnchantmentProvider::new);
+		pack.addProvider(ModEnchantmentTagProvider::new);
+	}
+
+	@Override
+	public void buildRegistry(RegistryBuilder registryBuilder) {
+		// This line points to the bootstrap method you already have in ModEnchantmentProvider.
+		registryBuilder.addRegistry(RegistryKeys.ENCHANTMENT, ModEnchantmentProvider::bootstrap);
 	}
 }
