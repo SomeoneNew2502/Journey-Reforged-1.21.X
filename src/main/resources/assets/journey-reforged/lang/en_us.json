@@ -1,17 +1,32 @@
 {
   "itemgroup.journey-reforged.ingredients": "Ingredients",
   "itemgroup.journey-reforged.blocks": "Blocks",
+  "itemgroup.journey-reforged.gear": "Gear",
 
 
   "block.journey-reforged.pearl_block": "Pearl Block",
   "block.journey-reforged.prismarine_alloy_block": "Block of Prismarine Alloy",
   "block.journey-reforged.warped_weave_block": "Warped Weave Block",
-  "block.journey-reforged.warped_weave_carpet": "Warped Weave Carpet",
+  "block.journey-reforged.warped_weave_carpet_block": "Warped Weave Carpet",
 
 
   "item.journey-reforged.pearl": "Pearl",
   "item.journey-reforged.warped_thread": "Warped Thread",
   "item.journey-reforged.elder_guardian_scale": "Elder Guardian Scale",
   "item.journey-reforged.prismarine_nugget": "Prismarine Nugget",
-  "item.journey-reforged.prismarine_ingot": "Prismarine Ingot"
+  "item.journey-reforged.prismarine_ingot": "Prismarine Ingot",
+
+  "item.journey-reforged.prismarine_sword": "Prismarine Sword",
+  "item.journey-reforged.prismarine_pickaxe": "Prismarine Pickaxe",
+  "item.journey-reforged.prismarine_axe": "Prismarine Axe",
+  "item.journey-reforged.prismarine_shovel": "Prismarine Shovel",
+  "item.journey-reforged.prismarine_hoe": "Prismarine Hoe",
+
+  "item.journey-reforged.wooden_dagger": "Wooden Dagger",
+  "item.journey-reforged.stone_dagger": "Stone Dagger",
+  "item.journey-reforged.golden_dagger": "Golden Dagger",
+  "item.journey-reforged.iron_dagger": "Iron Dagger",
+  "item.journey-reforged.diamond_dagger": "Diamond Dagger",
+  "item.journey-reforged.netherite_dagger": "Netherite Dagger",
+  "item.journey-reforged.prismarine_dagger": "Prismarine Dagger"
 }

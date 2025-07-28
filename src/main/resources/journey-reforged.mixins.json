@@ -3,7 +3,11 @@
 	"package": "net.sinny.journeyreforged.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"gear.DaggerEnchantmentMixin",
+		"gear.DaggerAnvilMixin",
+		"gear.AxeItemMixin",
+		"accessor.ItemComponentMapSetter",
+		"entities.CreeperExplosionMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

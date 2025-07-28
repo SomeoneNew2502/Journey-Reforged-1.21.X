@@ -9,8 +9,8 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
-import net.sinny.journeyreforged.block.ModBlock;
-import net.sinny.journeyreforged.item.ModItems;
+import net.sinny.journeyreforged.registry.BlockRegistry;
+import net.sinny.journeyreforged.registry.ItemRegistry;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -22,33 +22,86 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     @Override
     public void generate(RecipeExporter recipeExporter) {
 
-        offer2x2CompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlock.PEARL.getBlock(), ModItems.PEARL);
-        offerShapelessRecipe(recipeExporter, ModItems.PEARL, ModBlock.PEARL.getBlock(), "pearl", 4);
+        offer2x2CompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, BlockRegistry.PEARL.getBlock(), ItemRegistry.PEARL);
+        offerShapelessRecipe(recipeExporter, ItemRegistry.PEARL, BlockRegistry.PEARL.getBlock(), "pearl", 4);
 
+        offer2x2CompactingRecipe(recipeExporter, RecipeCategory.DECORATIONS, BlockRegistry.WARPED_WEAVE.getBlock(), ItemRegistry.WARPED_THREAD);
 
-        offerCompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlock.PRISMARINE_ALLOY.getBlock(), ModItems.PRISMARINE_INGOT);
-        offerShapelessRecipe(recipeExporter, ModItems.PRISMARINE_INGOT, ModBlock.PRISMARINE_ALLOY.getBlock(), "prismarine_ingot", 9);
+        offerCompactingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, BlockRegistry.PRISMARINE_ALLOY.getBlock(), ItemRegistry.PRISMARINE_INGOT);
+        offerShapelessRecipe(recipeExporter, ItemRegistry.PRISMARINE_INGOT, BlockRegistry.PRISMARINE_ALLOY.getBlock(), "prismarine_ingot", 9);
 
-        offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, ModItems.PRISMARINE_NUGGET, RecipeCategory.MISC, ModItems.PRISMARINE_INGOT, "prismarine_ingot_from_nugget", "prismarine_ingot", "prismarine_nugget_from_ingot", "prismarine_nugget");
+        offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, ItemRegistry.PRISMARINE_NUGGET, RecipeCategory.MISC, ItemRegistry.PRISMARINE_INGOT, "prismarine_ingot_from_nugget", "prismarine_ingot", "prismarine_nugget_from_ingot", "prismarine_nugget");
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PRISMARINE_INGOT)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.PRISMARINE_INGOT)
                 .pattern("CCC")
                 .pattern("CSS")
                 .pattern("SS ")
                 .input('C', Items.COPPER_INGOT)
-                .input('S', ModItems.ELDER_GUARDIAN_SCALE)
+                .input('S', ItemRegistry.ELDER_GUARDIAN_SCALE)
                 .group("prismarine_ingot")
-                .criterion(hasItem(ModItems.PRISMARINE_INGOT), conditionsFromItem(ModItems.PRISMARINE_INGOT))
-                .criterion(hasItem(ModItems.ELDER_GUARDIAN_SCALE), conditionsFromItem(ModItems.ELDER_GUARDIAN_SCALE))
+                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
+                .criterion(hasItem(ItemRegistry.ELDER_GUARDIAN_SCALE), conditionsFromItem(ItemRegistry.ELDER_GUARDIAN_SCALE))
                 .offerTo(recipeExporter, Identifier.of(JourneyReforged.MOD_ID, "prismarine_ingot_from_scales"));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlock.WARPED_WEAVE_CARPET.getBlock())
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, BlockRegistry.WARPED_WEAVE_CARPET.getBlock())
                 .pattern("WW ")
                 .pattern("   ")
                 .pattern("   ")
-                .input('W', ModBlock.WARPED_WEAVE.getBlock())
-                .criterion(hasItem(ModBlock.WARPED_WEAVE_CARPET.getBlock()), conditionsFromItem(ModBlock.WARPED_WEAVE_CARPET.getBlock()))
-                .criterion(hasItem(ModBlock.WARPED_WEAVE.getBlock()), conditionsFromItem(ModBlock.WARPED_WEAVE.getBlock()))
+                .input('W', BlockRegistry.WARPED_WEAVE.getBlock())
+                .criterion(hasItem(BlockRegistry.WARPED_WEAVE_CARPET.getBlock()), conditionsFromItem(BlockRegistry.WARPED_WEAVE_CARPET.getBlock()))
+                .criterion(hasItem(BlockRegistry.WARPED_WEAVE.getBlock()), conditionsFromItem(BlockRegistry.WARPED_WEAVE.getBlock()))
+                .offerTo(recipeExporter);
+
+
+        //Prismarine Sword + Tools
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_SWORD)
+                .pattern(" P ")
+                .pattern(" P ")
+                .pattern(" S ")
+                .input('P', ItemRegistry.PRISMARINE_INGOT)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.PRISMARINE_SWORD), conditionsFromItem(ItemRegistry.PRISMARINE_SWORD))
+                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_PICKAXE)
+                .pattern("PPP")
+                .pattern(" S ")
+                .pattern(" S ")
+                .input('P', ItemRegistry.PRISMARINE_INGOT)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.PRISMARINE_PICKAXE), conditionsFromItem(ItemRegistry.PRISMARINE_PICKAXE))
+                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_AXE)
+                .pattern(" PP")
+                .pattern(" SP")
+                .pattern(" S ")
+                .input('P', ItemRegistry.PRISMARINE_INGOT)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.PRISMARINE_AXE), conditionsFromItem(ItemRegistry.PRISMARINE_AXE))
+                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_SHOVEL)
+                .pattern(" P ")
+                .pattern(" S ")
+                .pattern(" S ")
+                .input('P', ItemRegistry.PRISMARINE_INGOT)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.PRISMARINE_SHOVEL), conditionsFromItem(ItemRegistry.PRISMARINE_SHOVEL))
+                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.PRISMARINE_HOE)
+                .pattern(" PP")
+                .pattern(" S ")
+                .pattern(" S ")
+                .input('P', ItemRegistry.PRISMARINE_INGOT)
+                .input('S', Items.STICK)
+                .criterion(hasItem(ItemRegistry.PRISMARINE_HOE), conditionsFromItem(ItemRegistry.PRISMARINE_HOE))
+                .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
                 .offerTo(recipeExporter);
     }
 }
