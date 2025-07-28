@@ -11,6 +11,7 @@ import net.sinny.journeyreforged.registry.ItemRegistry;
 import java.util.function.Supplier;
 
 public enum JRToolMaterials implements ToolMaterial {
+
     PRISMARINE(BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
             1111, 10.0F, 5.0F, 22, () -> Ingredient.ofItems(ItemRegistry.PRISMARINE_INGOT));
     
