@@ -29,7 +29,7 @@ public abstract class AnimalXpMixin {
     )
     private void tagBreedingXpOrb(ServerWorld world, AnimalEntity other, @Nullable PassiveEntity baby, CallbackInfo ci) {
         AnimalEntity self = (AnimalEntity) (Object) this;
-        int amount = self.getRandom().nextInt(7) + 1;
+        int amount = 5;
 
         ExperienceOrbEntity orb = new ExperienceOrbEntity(world, self.getX(), self.getY(), self.getZ(), amount);
 

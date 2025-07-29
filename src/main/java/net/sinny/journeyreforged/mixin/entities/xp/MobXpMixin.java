@@ -1,10 +1,7 @@
 package net.sinny.journeyreforged.mixin.entities.xp;
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ExperienceOrbEntity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.mob.ZombifiedPiglinEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -20,29 +17,50 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Mixin(LivingEntity.class)
 public abstract class MobXpMixin {
+
+    // NEW: Define a constant array of the armor slots we want to check.
+    // This replaces the old EquipmentSlot.Type.ARMOR.getSlots() call.
+    private static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[]{
+            EquipmentSlot.HEAD,
+            EquipmentSlot.CHEST,
+            EquipmentSlot.LEGS,
+            EquipmentSlot.FEET
+    };
+
+    private static final Set<EntityType<?>> CAN_WEAR_GEAR = Set.of(
+            EntityType.ZOMBIE,
+            EntityType.SKELETON,
+            EntityType.DROWNED,
+            EntityType.HUSK,
+            EntityType.STRAY,
+            EntityType.ZOMBIFIED_PIGLIN,
+            EntityType.PIGLIN
+    );
 
     private static final Map<EntityType<?>, Integer> XP_VALUES = new ImmutableMap.Builder<EntityType<?>, Integer>()
             .put(EntityType.ZOMBIE, 7)
             .put(EntityType.DROWNED, 7)
             .put(EntityType.HUSK, 7)
             .put(EntityType.SKELETON, 7)
-            .put(EntityType.CREEPER, 7)
             .put(EntityType.SPIDER, 7)
-            .put(EntityType.ENDERMAN, 9)
+            .put(EntityType.PILLAGER, 8)
+            .put(EntityType.ZOMBIFIED_PIGLIN, 8)
+            .put(EntityType.STRAY, 8)
+            .put(EntityType.CREEPER, 8)
+            .put(EntityType.CAVE_SPIDER, 9)
+            .put(EntityType.PIGLIN, 9)
+            .put(EntityType.ENDERMAN, 10)
+            .put(EntityType.VINDICATOR, 10)
             .put(EntityType.GHAST, 10)
             .put(EntityType.HOGLIN, 10)
-            .put(EntityType.PIGLIN, 7)
-            .put(EntityType.PILLAGER, 7)
             .put(EntityType.SHULKER, 10)
-            .put(EntityType.STRAY, 7)
-            .put(EntityType.VINDICATOR, 9)
             .put(EntityType.WITCH, 10)
             .put(EntityType.WITHER_SKELETON, 10)
             .put(EntityType.ZOGLIN, 20)
-            .put(EntityType.ZOMBIFIED_PIGLIN, 7)
             .put(EntityType.EVOKER, 20)
             .put(EntityType.ELDER_GUARDIAN, 100)
             .build();
@@ -55,18 +73,29 @@ public abstract class MobXpMixin {
     private void journeyreforged$modifyXpDropValue(ServerWorld world, Entity attacker, CallbackInfoReturnable<Integer> cir) {
         LivingEntity self = (LivingEntity) (Object) this;
         int originalAmount = cir.getReturnValueI();
-        int newAmount;
 
         if (self.isBaby()) {
             if (self instanceof ZombieEntity || self instanceof ZombifiedPiglinEntity) {
-                newAmount = 15;
+                cir.setReturnValue(15);
             } else {
-                newAmount = originalAmount;
+                cir.setReturnValue(originalAmount);
             }
-        } else {
-            newAmount = XP_VALUES.getOrDefault(self.getType(), originalAmount);
+            return;
         }
-        cir.setReturnValue(newAmount);
+
+        int finalAmount = XP_VALUES.getOrDefault(self.getType(), originalAmount);
+
+        if (CAN_WEAR_GEAR.contains(self.getType())) {
+            int equipmentBonus = 0;
+            for (EquipmentSlot slot : ARMOR_SLOTS) {
+                if (!self.getEquippedStack(slot).isEmpty()) {
+                    equipmentBonus += 2;
+                }
+            }
+            finalAmount += equipmentBonus;
+        }
+
+        cir.setReturnValue(finalAmount);
     }
 
     @Inject(

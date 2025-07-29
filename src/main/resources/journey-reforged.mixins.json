@@ -22,6 +22,7 @@
 		"gear.BowMixin",
 		"gear.SoulSpeedMixin",
 		"gear.TotemMixin",
+		"gear.ItemDurabilityMixin",
 		"items.NetherStarMixin"
 	],
 	"injectors": {
