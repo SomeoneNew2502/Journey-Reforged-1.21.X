@@ -52,6 +52,10 @@ public class ItemGroupRegistry {
                         entries.add(ItemRegistry.PRISMARINE_AXE);
                         entries.add(ItemRegistry.PRISMARINE_SHOVEL);
                         entries.add(ItemRegistry.PRISMARINE_HOE);
+                        entries.add(ItemRegistry.PRISMARINE_HELMET);
+                        entries.add(ItemRegistry.PRISMARINE_CHESTPLATE);
+                        entries.add(ItemRegistry.PRISMARINE_LEGGINGS);
+                        entries.add(ItemRegistry.PRISMARINE_BOOTS);
                         entries.add(ItemRegistry.WOODEN_DAGGER);
                         entries.add(ItemRegistry.STONE_DAGGER);
                         entries.add(ItemRegistry.GOLDEN_DAGGER);
