@@ -21,6 +21,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
@@ -199,26 +200,41 @@ public class ThrownDaggerEntity extends PersistentProjectileEntity {
                 }
             }
 
-            Vec3d bounceVelocity = this.getVelocity().negate().multiply(0.15);
-            bounceVelocity = bounceVelocity.add((this.random.nextDouble() - 0.5) * 0.1, 0.1 + this.random.nextDouble() * 0.1, (this.random.nextDouble() - 0.5) * 0.1);
-            this.setVelocity(bounceVelocity);
+            if (!this.getWorld().isClient()) {
+                Vec3d bounceVelocity = this.getVelocity().negate().multiply(0.15);
+                bounceVelocity = bounceVelocity.add((this.random.nextDouble() - 0.5) * 0.1, 0.1 + this.random.nextDouble() * 0.1, (this.random.nextDouble() - 0.5) * 0.1);
+                this.setVelocity(bounceVelocity);
+            }
         }
     }
 
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
+        this.playSound(this.getHitSound(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
+
+        Direction sideHit = blockHitResult.getSide();
+        switch (sideHit) {
+            case UP:
+                this.setPitch(random.nextBetween(-90, -70));
+                break;
+            case DOWN:
+                this.setPitch(random.nextBetween(70, 90));
+                break;
+            default:
+                break;
+        }
+
         if (this.repossessionLevel > 0) {
-            this.playSound(this.getHitSound(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             this.setPosition(blockHitResult.getPos());
             this.returnDelay = 5;
-            this.setVelocity(Vec3d.ZERO);
         } else {
-            this.playSound(this.getHitSound(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             this.setPosition(blockHitResult.getPos());
             this.getDataTracker().set(STUCK, true);
             this.inGround = true;
-            this.setVelocity(Vec3d.ZERO);
         }
+
+        this.setVelocity(Vec3d.ZERO);
+
     }
 
     @Override

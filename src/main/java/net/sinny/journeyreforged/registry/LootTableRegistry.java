@@ -1,6 +1,8 @@
 package net.sinny.journeyreforged.registry;
 
 import net.sinny.journeyreforged.event.loot_tables.chests.BuriedTreasure;
+import net.sinny.journeyreforged.event.loot_tables.chests.MendingLoot;
+import net.sinny.journeyreforged.event.loot_tables.chests.RepossessionLoot;
 import net.sinny.journeyreforged.event.loot_tables.entity.ElderGuardian;
 
 public class LootTableRegistry {
@@ -9,5 +11,7 @@ public class LootTableRegistry {
 
         ElderGuardian.modifyLootTables();
         BuriedTreasure.modifyLootTables();
+        MendingLoot.modifyLootTables();
+        RepossessionLoot.modifyLootTables();
     }
 }
