@@ -98,7 +98,7 @@ public class ThrownDaggerEntity extends PersistentProjectileEntity {
         }
 
         if (this.isStuck()) {
-            if (this.age > 1200) { this.discard(); }
+            if (this.age > 6000) { this.discard(); }
             List<PlayerEntity> nearbyPlayers = this.getWorld().getEntitiesByClass(PlayerEntity.class, this.getBoundingBox().expand(0.2D), player -> true);
             if (!nearbyPlayers.isEmpty()) { this.onPlayerCollision(nearbyPlayers.get(0)); }
             return;
