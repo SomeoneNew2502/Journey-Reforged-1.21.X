@@ -3,11 +3,27 @@
 	"package": "net.sinny.journeyreforged.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"accessor.ItemComponentMapSetter",
+		"entities.CreeperShieldMixin",
+		"entities.CreeperExplosionMixin",
+		"entities.xp.AdvancementXpMixin",
+		"entities.xp.AnimalXpMixin",
+		"entities.xp.BlockXpMixin",
+		"entities.xp.FishingXpMixin",
+		"entities.xp.MobXpMixin",
+		"entities.xp.VillagerXpMixin",
+		"entities.xp.XpBottleMixin",
+		"entities.xp.ExperienceOrbDataTrackerMixin",
+		"entities.xp.ExperienceOrbGainMixin",
 		"gear.DaggerEnchantmentMixin",
 		"gear.DaggerAnvilMixin",
 		"gear.AxeItemMixin",
-		"accessor.ItemComponentMapSetter",
-		"entities.CreeperExplosionMixin"
+		"gear.ArmorNerfMixin",
+		"gear.BowMixin",
+		"gear.SoulSpeedMixin",
+		"gear.TotemMixin",
+		"gear.ItemDurabilityMixin",
+		"items.NetherStarMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

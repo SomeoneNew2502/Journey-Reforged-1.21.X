@@ -9,12 +9,16 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.sinny.journeyreforged.JourneyReforged;
 import net.sinny.journeyreforged.item.DaggerItem;
+import net.sinny.journeyreforged.item.JRArmorMaterials;
 import net.sinny.journeyreforged.item.JRToolMaterials;
+import net.sinny.journeyreforged.item.PrismarineArmorItem;
 
 import java.util.List;
 
 @Slf4j
 public class ItemRegistry {
+
+    private static final int PRISMARINE_DURABILITY_MULTIPLIER = 35; // Diamond is 33, Netherite is 37
 
     private static List<Identifier> getPrismarineUpgradeBaseSlotTextures() {
         // CORRECTED PATHS: The textures are in the "item" directory, not "smithing"
@@ -23,7 +27,11 @@ public class ItemRegistry {
                 Identifier.ofVanilla("item/empty_slot_pickaxe"),
                 Identifier.ofVanilla("item/empty_slot_axe"),
                 Identifier.ofVanilla("item/empty_slot_shovel"),
-                Identifier.ofVanilla("item/empty_slot_hoe")
+                Identifier.ofVanilla("item/empty_slot_hoe"),
+                Identifier.ofVanilla("item/empty_slot_helmet"),
+                Identifier.ofVanilla("item/empty_slot_chestplate"),
+                Identifier.ofVanilla("item/empty_slot_leggings"),
+                Identifier.ofVanilla("item/empty_slot_boots")
         );
     }
 
@@ -52,11 +60,13 @@ public class ItemRegistry {
     private static final Text PRISMARINE_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Text.translatable(
             "item.journey-reforged.smithing_template.prismarine_upgrade.additions_slot_description");
 
+
     public static final Item PEARL = registerItem("pearl", new Item(new Item.Settings()));
     public static final Item WARPED_THREAD = registerItem("warped_thread", new Item(new Item.Settings()));
     public static final Item ELDER_GUARDIAN_SCALE = registerItem("elder_guardian_scale", new Item(new Item.Settings()));
     public static final Item PRISMARINE_NUGGET = registerItem("prismarine_nugget", new Item(new Item.Settings()));
     public static final Item PRISMARINE_INGOT = registerItem("prismarine_ingot", new Item(new Item.Settings()));
+
 
     public static final Item PRISMARINE_SWORD = registerItem("prismarine_sword",
             new SwordItem(JRToolMaterials.PRISMARINE, new Item.Settings()
@@ -77,6 +87,24 @@ public class ItemRegistry {
     public static final Item PRISMARINE_HOE = registerItem("prismarine_hoe",
             new HoeItem(JRToolMaterials.PRISMARINE, new Item.Settings()
                     .attributeModifiers(HoeItem.createAttributeModifiers(JRToolMaterials.PRISMARINE, -5, 0.0f))));
+
+
+    public static final Item PRISMARINE_HELMET = registerItem("prismarine_helmet",
+            new PrismarineArmorItem(JRArmorMaterials.PRISMARINE, ArmorItem.Type.HELMET, new Item.Settings() // Use new class
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(PRISMARINE_DURABILITY_MULTIPLIER))));
+
+    public static final Item PRISMARINE_CHESTPLATE = registerItem("prismarine_chestplate",
+            new PrismarineArmorItem(JRArmorMaterials.PRISMARINE, ArmorItem.Type.CHESTPLATE, new Item.Settings() // Use new class
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(PRISMARINE_DURABILITY_MULTIPLIER))));
+
+    public static final Item PRISMARINE_LEGGINGS = registerItem("prismarine_leggings",
+            new PrismarineArmorItem(JRArmorMaterials.PRISMARINE, ArmorItem.Type.LEGGINGS, new Item.Settings() // Use new class
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(PRISMARINE_DURABILITY_MULTIPLIER))));
+
+    public static final Item PRISMARINE_BOOTS = registerItem("prismarine_boots",
+            new PrismarineArmorItem(JRArmorMaterials.PRISMARINE, ArmorItem.Type.BOOTS, new Item.Settings() // Use new class
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(PRISMARINE_DURABILITY_MULTIPLIER))));
+
 
     public static final Item WOODEN_DAGGER = registerItem("wooden_dagger",
             new DaggerItem(ToolMaterials.WOOD, new Item.Settings()
@@ -106,6 +134,7 @@ public class ItemRegistry {
             new DaggerItem(JRToolMaterials.PRISMARINE, new Item.Settings()
                     .attributeModifiers(DaggerItem.createDaggerAttributes(JRToolMaterials.PRISMARINE, -0.5F, -2.0f))));
 
+
     public static final Item PRISMARINE_UPGRADE_SMITHING_TEMPLATE = registerItem("prismarine_upgrade_smithing_template",
             new SmithingTemplateItem(
                     PRISMARINE_UPGRADE_APPLIES_TO_TEXT,
@@ -116,6 +145,7 @@ public class ItemRegistry {
                     getPrismarineUpgradeBaseSlotTextures(),
                     getPrismarineUpgradeAdditionSlotTextures()
             ));
+
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(JourneyReforged.MOD_ID, name), item);

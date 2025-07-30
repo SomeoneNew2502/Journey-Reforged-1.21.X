@@ -3,6 +3,7 @@ package net.sinny.journeyreforged.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.sinny.journeyreforged.registry.ItemRegistry;
@@ -25,6 +26,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
             ItemRegistry.NETHERITE_DAGGER,
             ItemRegistry.PRISMARINE_DAGGER
     };
+
+    Item[] stoneToolMaterials = new Item[]{
+            Items.TERRACOTTA, Items.WHITE_TERRACOTTA, Items.ORANGE_TERRACOTTA, Items.MAGENTA_TERRACOTTA,
+            Items.LIGHT_BLUE_TERRACOTTA, Items.YELLOW_TERRACOTTA, Items.LIME_TERRACOTTA, Items.PINK_TERRACOTTA,
+            Items.GRAY_TERRACOTTA, Items.LIGHT_GRAY_TERRACOTTA, Items.CYAN_TERRACOTTA, Items.PURPLE_TERRACOTTA,
+            Items.BLUE_TERRACOTTA, Items.BROWN_TERRACOTTA, Items.GREEN_TERRACOTTA, Items.RED_TERRACOTTA,
+            Items.BLACK_TERRACOTTA, Items.SANDSTONE, Items.BASALT, Items.CALCITE
+    };
+
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
@@ -57,5 +67,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.HOES)
                 .add(ItemRegistry.PRISMARINE_HOE);
+
+        getOrCreateTagBuilder(ItemTags.STONE_TOOL_MATERIALS)
+                .add(stoneToolMaterials);
     }
 }

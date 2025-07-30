@@ -25,6 +25,11 @@
   "item.journey-reforged.prismarine_shovel": "Prismarine Shovel",
   "item.journey-reforged.prismarine_hoe": "Prismarine Hoe",
 
+  "item.journey-reforged.prismarine_helmet": "Prismarine Helmet",
+  "item.journey-reforged.prismarine_chestplate": "Prismarine Chestplate",
+  "item.journey-reforged.prismarine_leggings": "Prismarine Leggings",
+  "item.journey-reforged.prismarine_boots": "Prismarine Boots",
+
   "item.journey-reforged.wooden_dagger": "Wooden Dagger",
   "item.journey-reforged.stone_dagger": "Stone Dagger",
   "item.journey-reforged.golden_dagger": "Golden Dagger",
@@ -33,14 +38,14 @@
   "item.journey-reforged.netherite_dagger": "Netherite Dagger",
   "item.journey-reforged.prismarine_dagger": "Prismarine Dagger",
 
-  "item.journey-reforged.prismarine_upgrade_smithing_template": "Prismarine Upgrade",
+  "item.journey-reforged.prismarine_upgrade_smithing_template": "Smithing Template",
 
   "upgrade.journey-reforged.prismarine_upgrade": "Prismarine Upgrade",
   "upgrade.journey-reforged.prismarine_upgrade.applies_to": "Diamond Gear",
   "upgrade.journey-reforged.prismarine_upgrade.ingredients": "Prismarine Ingot",
 
-  "item.journey-reforged.smithing_template.prismarine_upgrade.base_slot_description": "Add diamond sword, pickaxe, axe, shovel, or hoe",
-  "item.journey-reforged.smithing_template.prismarine_upgrade.additions_slot_description": "Add prismarine ingot",
+  "item.journey-reforged.smithing_template.prismarine_upgrade.base_slot_description": "Add diamond armor, weapon, or tool",
+  "item.journey-reforged.smithing_template.prismarine_upgrade.additions_slot_description": "Add Prismarine Ingot",
 
   "item.modifiers.when_thrown": "When Thrown:",
   "attribute.name.journeyreforged.thrown_damage": "Thrown Damage",

@@ -8,6 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
@@ -74,12 +75,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         prismarineUpgrades.put(Items.DIAMOND_AXE, ItemRegistry.PRISMARINE_AXE);
         prismarineUpgrades.put(Items.DIAMOND_SHOVEL, ItemRegistry.PRISMARINE_SHOVEL);
         prismarineUpgrades.put(Items.DIAMOND_HOE, ItemRegistry.PRISMARINE_HOE);
+        prismarineUpgrades.put(Items.DIAMOND_HELMET, ItemRegistry.PRISMARINE_HELMET);
+        prismarineUpgrades.put(Items.DIAMOND_CHESTPLATE, ItemRegistry.PRISMARINE_CHESTPLATE);
+        prismarineUpgrades.put(Items.DIAMOND_LEGGINGS, ItemRegistry.PRISMARINE_LEGGINGS);
+        prismarineUpgrades.put(Items.DIAMOND_BOOTS, ItemRegistry.PRISMARINE_BOOTS);
         prismarineUpgrades.put(ItemRegistry.DIAMOND_DAGGER, ItemRegistry.PRISMARINE_DAGGER);
 
         prismarineUpgrades.forEach((diamondTool, prismarineTool) -> {
-            RecipeCategory category = (prismarineTool instanceof SwordItem || prismarineTool instanceof DaggerItem)
-                    ? RecipeCategory.COMBAT
-                    : RecipeCategory.TOOLS;
+            RecipeCategory category;
+            if (prismarineTool instanceof SwordItem || prismarineTool instanceof DaggerItem || prismarineTool instanceof ArmorItem) {
+                category = RecipeCategory.COMBAT;
+            } else {
+                category = RecipeCategory.TOOLS;
+            }
 
             SmithingTransformRecipeJsonBuilder.create(
                             Ingredient.ofItems(ItemRegistry.PRISMARINE_UPGRADE_SMITHING_TEMPLATE),
@@ -87,7 +95,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                             Ingredient.ofItems(ItemRegistry.PRISMARINE_INGOT),
                             category,
                             prismarineTool)
-                    .criterion(hasItem(prismarineTool), conditionsFromItem(prismarineTool))
+                    .criterion(hasItem(diamondTool), conditionsFromItem(diamondTool))
                     .criterion(hasItem(ItemRegistry.PRISMARINE_INGOT), conditionsFromItem(ItemRegistry.PRISMARINE_INGOT))
                     .offerTo(recipeExporter, getItemPath(prismarineTool) + "_smithing");
         });
