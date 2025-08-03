@@ -35,6 +35,11 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemRegistry.ELDER_GUARDIAN_SCALE, Models.GENERATED);
         itemModelGenerator.register(ItemRegistry.PRISMARINE_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
 
+        itemModelGenerator.register(ItemRegistry.PRISMARINE_HELMET, Models.GENERATED);
+        itemModelGenerator.register(ItemRegistry.PRISMARINE_CHESTPLATE, Models.GENERATED);
+        itemModelGenerator.register(ItemRegistry.PRISMARINE_LEGGINGS, Models.GENERATED);
+        itemModelGenerator.register(ItemRegistry.PRISMARINE_BOOTS, Models.GENERATED);
+
         itemModelGenerator.register(ItemRegistry.PRISMARINE_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ItemRegistry.PRISMARINE_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(ItemRegistry.PRISMARINE_AXE, Models.HANDHELD);
